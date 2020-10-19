@@ -4,27 +4,36 @@ let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
-let namber = prompt('Угадай число от 1 до 100');
 
+
+
+let correct = Math.floor(Math.random()*101);
+console.log(correct);
 
 function guessNumber(){
-
-    let correct = 7;
+    let namber = prompt('Угадай число от 1 до 100', correct);
     if (namber === null) {    
         return alert('Игра окончена');
     };
-    if (namber > correct) {    
-        return alert('Загаданное число меньше');
-    };
-    if (namber < correct) {    
-        return alert('Загаданное число больше');
-    };
-    if (!isNumber(namber)) {    
-        return alert('Введи число!');
-    };
-    if (namber == correct) {    
-        return alert('Поздравляю, Вы угадали!!!');
+    if (namber ==='' || !isNumber(namber)) {    
+        alert('Введи число!');
+        guessNumber();
     };
     
+    if (namber > correct) {    
+         alert('Загаданное число меньше');
+         guessNumber();
+
+    };
+    if (namber < correct) {    
+        alert('Загаданное число больше');
+        guessNumber();
+    };
+    if (namber == correct) {    
+         alert('Поздравляю, Вы угадали!!!');
+    };
+
+
 };
-console.log(guessNumber());
+guessNumber();
+
